@@ -1,0 +1,29 @@
+import express, { urlencoded } from "express";
+import "dotenv/config";
+import cors from "cors";
+import { mainRouter } from "./routes/main";
+import helmet from "helmet";
+import { fetchFakeStoreApi } from "./services/fakeStoreApi";
+
+const server = express();
+server.use(helmet());
+server.use(cors());
+server.use(urlencoded({ extended: true }));
+server.disable("x-powered-by");
+server.use(express.json());
+
+server.use(mainRouter);
+
+(async () => {
+  try {
+    await fetchFakeStoreApi();
+    console.log("Produtos sincronizados com sucesso!");
+  } catch (err) {
+    console.error("Erro ao sincronizar produtos:", err);
+  }
+})();
+
+const PORT = process.env.PORT || 3000;
+server.listen(PORT, () => {
+  console.log(`Servidor rodando em http://localhost:${PORT}`);
+});
