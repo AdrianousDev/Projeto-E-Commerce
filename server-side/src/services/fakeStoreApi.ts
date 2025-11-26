@@ -5,6 +5,7 @@ export const fetchFakeStoreApi = async () => {
   try {
     const products = await fetchApi("https://fakestoreapi.com/products");
 
+    // Se der erro na API externa
     if (!products) return false;
 
     const upsertedProducts = await Promise.all(
@@ -19,7 +20,13 @@ export const fetchFakeStoreApi = async () => {
             imagemUrl: product.image,
             estoque: 10,
           },
-          update: {},
+          update: {
+            descricao: product.description,
+            preco: product.price,
+            categoria: product.category,
+            imagemUrl: product.image,
+            updatedAt: new Date(),
+          },
         })
       )
     );

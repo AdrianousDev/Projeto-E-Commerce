@@ -11,18 +11,38 @@ model Cliente {
   id        Int      @id @default(autoincrement())
   nome      String
   email     String   @unique
-  // pedidos   Pedido[]
+  pedidos   Pedido[]
   createdAt DateTime @default(now())
 }
 
 model Produto {
-  id        Int      @id @default(autoincrement())
-  titulo    String   @unique
-  descricao String   @db.Text
-  preco     Decimal  @db.Decimal(10, 2)
+  id        Int          @id @default(autoincrement())
+  titulo    String       @unique
+  descricao String       @db.Text
+  preco     Decimal      @db.Decimal(10, 2)
   categoria String
-  imagemUrl String
+  imagemUrl String       @default("")
   estoque   Int
-  updatedAt DateTime @updatedAt
-  // itens      ItemPedido[]
+  createdAt DateTime     @default(now())
+  updatedAt DateTime     @updatedAt
+  itens     ItemPedido[]
+}
+
+model Pedido {
+  id        Int          @id @default(autoincrement())
+  clienteId Int
+  cliente   Cliente      @relation(fields: [clienteId], references: [id])
+  total     Decimal      @db.Decimal(10, 2)
+  createdAt DateTime     @default(now())
+  itens     ItemPedido[]
+}
+
+model ItemPedido {
+  id         Int @id @default(autoincrement())
+  pedidoId   Int
+  produtoId  Int
+  quantidade Int
+
+  pedido  Pedido  @relation(fields: [pedidoId], references: [id])
+  produto Produto @relation(fields: [produtoId], references: [id])
 }

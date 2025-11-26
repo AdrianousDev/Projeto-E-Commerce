@@ -1,5 +1,9 @@
 import { Router } from "express";
-import { createCliente } from "../services/clientes";
+import { createCliente } from "../services/cliente";
+import { createProduto, listProdutos, findProduto } from "../services/produto";
+import { createPedido, findMeuPedidos } from "../services/pedido";
+import { validarCarrinho } from "../services/validarCarrinho";
+import { findMinhasCompras } from "../services/minhasCompras";
 
 export const mainRouter = Router();
 
@@ -8,10 +12,63 @@ mainRouter.get("/ping", (req, res) => {
 });
 
 mainRouter.post("/clientes", async (req, res) => {
+  const { nome, email } = req.body;
+
   const data = {
-    name: "Bruno",
-    email: "bruno@teste.com",
+    nome,
+    email,
   };
+
   const result = await createCliente(data);
+  res.json(result);
+});
+
+mainRouter.post("/produtos", async (req, res) => {
+  const { titulo, descricao, preco, categoria, imagemUrl, estoque } = req.body;
+
+  const data = {
+    titulo,
+    descricao,
+    preco,
+    categoria,
+    imagemUrl,
+    estoque,
+  };
+
+  const result = await createProduto(data);
+  res.json(result);
+});
+
+mainRouter.get("/produtos", async (req, res) => {
+  const result = await listProdutos();
+  res.json(result);
+});
+
+mainRouter.get("/produto/:id", async (req, res) => {
+  const id = Number(req.params.id);
+
+  const result = await findProduto(id);
+  res.json(result);
+});
+
+mainRouter.post("/pedidos", async (req, res) => {
+  const { clienteId, produtos } = req.body;
+
+  const result = await createPedido(clienteId, produtos);
+  res.json(result);
+});
+
+mainRouter.post("/carrinho/validar", async (req, res) => {
+  const { produtoId, quantidade } = req.body;
+  console.log(produtoId, quantidade);
+
+  const result = await validarCarrinho(produtoId, quantidade);
+  res.json(result);
+});
+
+mainRouter.get("/minhas-compras", async (req, res) => {
+  const email = req.body.email;
+
+  const result = await findMeuPedidos(email);
   res.json(result);
 });

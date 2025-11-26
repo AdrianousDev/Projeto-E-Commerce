@@ -1,4 +1,4 @@
-import express, { urlencoded } from "express";
+import express from "express";
 import "dotenv/config";
 import cors from "cors";
 import { mainRouter } from "./routes/main";
@@ -8,9 +8,14 @@ import { fetchFakeStoreApi } from "./services/fakeStoreApi";
 const server = express();
 server.use(helmet());
 server.use(cors());
-server.use(urlencoded({ extended: true }));
 server.disable("x-powered-by");
+server.use(express.urlencoded({ extended: true }));
 server.use(express.json());
+
+server.use((req, res, next) => {
+  console.log(req.method + " " + req.url);
+  next();
+});
 
 server.use(mainRouter);
 
