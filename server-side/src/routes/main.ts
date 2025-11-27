@@ -1,4 +1,5 @@
 import { Router } from "express";
+import dotenv from "dotenv";
 import { createCliente } from "../services/cliente";
 import { createProduto, listProdutos, findProduto } from "../services/produto";
 import { createPedido, findMeuPedidos } from "../services/pedido";
@@ -77,4 +78,13 @@ mainRouter.get("/minhas-compras", async (req, res) => {
 mainRouter.get("/categorias", async (req, res) => {
   const result = await listCategorias();
   res.json(result);
+});
+
+mainRouter.get("/env", (req, res) => {
+  const env = {
+    GET_PRODUTOS: process.env.GET_PRODUTOS,
+    GET_CATEGORIAS: process.env.GET_CATEGORIAS,
+  };
+
+  res.json(env);
 });

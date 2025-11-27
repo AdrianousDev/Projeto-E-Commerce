@@ -18,7 +18,8 @@ export const fetchFakeStoreApi = async () => {
             preco: product.price,
             categoria: product.category,
             imagemUrl: product.image,
-            estoque: 10,
+            estoque: product.rating.count,
+            avaliacao: product.rating.rate,
           },
           update: {
             descricao: product.description,
@@ -26,6 +27,8 @@ export const fetchFakeStoreApi = async () => {
             categoria: product.category,
             imagemUrl: product.image,
             updatedAt: new Date(),
+            avaliacao: product.rating.rate,
+            estoque: product.rating.count,
           },
         })
       )

@@ -21,10 +21,11 @@ model Produto {
   descricao String       @db.Text
   preco     Decimal      @db.Decimal(10, 2)
   categoria String
-  imagemUrl String       @default("")
+  imagemUrl String?
   estoque   Int
   createdAt DateTime     @default(now())
   updatedAt DateTime     @updatedAt
+  avaliacao Decimal      @default("0") @db.Decimal(2, 1)
   itens     ItemPedido[]
 }
 
