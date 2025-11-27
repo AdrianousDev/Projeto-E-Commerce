@@ -4,6 +4,7 @@ import { createProduto, listProdutos, findProduto } from "../services/produto";
 import { createPedido, findMeuPedidos } from "../services/pedido";
 import { validarCarrinho } from "../services/validarCarrinho";
 import { validarEstoque } from "../middlewares/validarEstoque";
+import { listCategorias } from "../services/categoria";
 
 export const mainRouter = Router();
 
@@ -70,5 +71,10 @@ mainRouter.get("/minhas-compras", async (req, res) => {
   const email = req.body.email;
 
   const result = await findMeuPedidos(email);
+  res.json(result);
+});
+
+mainRouter.get("/categorias", async (req, res) => {
+  const result = await listCategorias();
   res.json(result);
 });
