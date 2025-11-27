@@ -2,6 +2,7 @@ import { prisma } from "../libs/prisma";
 
 export const createPedido = async (clienteId, produtos) => {
   try {
+    // Buscar os produtos no banco
     const produtosDoBanco = await prisma.produto.findMany({
       where: { id: { in: produtos.map((p) => p.id) } },
     });

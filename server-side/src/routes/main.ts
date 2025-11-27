@@ -3,7 +3,7 @@ import { createCliente } from "../services/cliente";
 import { createProduto, listProdutos, findProduto } from "../services/produto";
 import { createPedido, findMeuPedidos } from "../services/pedido";
 import { validarCarrinho } from "../services/validarCarrinho";
-import { findMinhasCompras } from "../services/minhasCompras";
+import { validarEstoque } from "../middlewares/validarEstoque";
 
 export const mainRouter = Router();
 
@@ -51,7 +51,7 @@ mainRouter.get("/produto/:id", async (req, res) => {
   res.json(result);
 });
 
-mainRouter.post("/pedidos", async (req, res) => {
+mainRouter.post("/pedidos", validarEstoque, async (req, res) => {
   const { clienteId, produtos } = req.body;
 
   const result = await createPedido(clienteId, produtos);

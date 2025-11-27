@@ -4,6 +4,7 @@ import cors from "cors";
 import { mainRouter } from "./routes/main";
 import helmet from "helmet";
 import { fetchFakeStoreApi } from "./services/fakeStoreApi";
+import mostrarRequest from "./middlewares/mostrarRequest";
 
 const server = express();
 server.use(helmet());
@@ -12,10 +13,7 @@ server.disable("x-powered-by");
 server.use(express.urlencoded({ extended: true }));
 server.use(express.json());
 
-server.use((req, res, next) => {
-  console.log(req.method + " " + req.url);
-  next();
-});
+server.use(mostrarRequest);
 
 server.use(mainRouter);
 

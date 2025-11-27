@@ -11,7 +11,7 @@ export const createProduto = async (data: Prisma.ProdutoCreateInput) => {
 };
 
 export const listProdutos = async () => {
-  const todosProdutos = prisma.produto.findMany({});
+  const todosProdutos = await prisma.produto.findMany({});
   return todosProdutos;
 };
 
