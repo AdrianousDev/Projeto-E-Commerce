@@ -21,3 +21,12 @@ export const findProduto = async (id: number) => {
   });
   return produto;
 };
+
+export const deleteProduto = async (id: number) => {
+  try {
+    const deletedProduto = await prisma.produto.delete({ where: { id } });
+    return deletedProduto;
+  } catch (error) {
+    return { error: error.meta };
+  }
+};

@@ -1,7 +1,12 @@
 import { Router } from "express";
 import dotenv from "dotenv";
 import { createCliente } from "../services/cliente";
-import { createProduto, listProdutos, findProduto } from "../services/produto";
+import {
+  createProduto,
+  listProdutos,
+  findProduto,
+  deleteProduto,
+} from "../services/produto";
 import { createPedido, findMeuPedidos } from "../services/pedido";
 import { validarCarrinho } from "../services/validarCarrinho";
 import { validarEstoque } from "../middlewares/validarEstoque";
@@ -50,6 +55,12 @@ mainRouter.get("/produto/:id", async (req, res) => {
   const id = Number(req.params.id);
 
   const result = await findProduto(id);
+  res.json(result);
+});
+
+mainRouter.delete("/produto/:id", async (req, res) => {
+  const id: number = parseInt(req.params.id);
+  const result = await deleteProduto(id);
   res.json(result);
 });
 
