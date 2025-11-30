@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CRUD E-commerce</title>
+    <link rel="stylesheet" href="./css/output.css" />
+  </head>
+
+  <body class="bg-gray-100 text-gray-900">
+    <header
+      class="container mx-auto flex justify-between items-center py-8 px-4"
+    >
+      <a href="./index.html"
+        ><h1
+          class="text-4xl font-bold text-blue-800 uppercase hover:text-blue-950 transition"
+        >
+          E-commerce
+        </h1></a
+      >
+      <nav class="flex gap-8">
+        <a
+          href="./pages/criarProduto.html"
+          class="bg-blue-200 py-2 px-4 rounded-md font-medium text-blue-800 hover:bg-blue-300 transition"
+          >Criar Produto</a
+        >
+        <a
+          href="./pages/deletarProduto.html"
+          class="bg-blue-200 py-2 px-4 rounded-md font-medium text-blue-800 hover:bg-blue-300 transition"
+          >Deletar Produto</a
+        >
+      </nav>
+    </header>
+
+    <main
+      class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-6"
+    >
+      <section id="filter" class="bg-white p-6 rounded-lg shadow h-min">
+        <div class="mb-5">
+          <h3 class="text-xl font-semibold mb-4 border-b pb-2">
+            Categorias
+            <span id="marcadorCategoria" class="text-sm text-gray-500"
+              >0 produtos</span
+            >
+          </h3>
+          <div id="categorias" class="space-y-2">
+            <button
+              data-categoria="todas"
+              class="w-full text-left bg-blue-100 hover:bg-blue-200 text-blue-800 font-medium py-2 px-4 rounded transition"
+            >
+              Todas as Categorias
+            </button>
+          </div>
+        </div>
+        <div>
+          <h3 class="text-xl font-semibold mb-4 border-b pb-2">
+            Carrinho
+            <span id="marcadorCarrinho" class="text-sm text-gray-500"
+              >0 produtos</span
+            >
+          </h3>
+          <div id="carrinho"></div>
+        </div>
+      </section>
+
+      <section class="space-y-6">
+        <div>
+          <form id="form-search" class="flex flex-col sm:flex-row gap-2">
+            <input
+              type="text"
+              id="pesquisaValue"
+              placeholder="Buscar produto..."
+              class="flex-1 border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+            <button
+              id="searchButton"
+              class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-2 rounded transition"
+            >
+              Buscar
+            </button>
+          </form>
+        </div>
+
+        <div
+          id="products"
+          class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 bg-gray-200 p-4 rounded-lg text-white"
+        ></div>
+      </section>
+    </main>
+
+    <!-- modal de produtos -->
+    <section
+      class="hidden fixed h-screen w-full bg-gray-800/50 top-0 left-0 z-50 justify-center items-center"
+      data-modal="container"
+    >
+      <div
+        class="bg-gray-200 min-w-[300px] p-10 relative border-4 border-blue-400 shadow-lg"
+      >
+        <button
+          data-modal="fechar"
+          class="bg-blue-900 w-12 h-12 border-4 rounded-full border-blue-400 text-white shadow-lg absolute -top-[30px] -left-[30px]"
+        >
+          X
+        </button>
+        <div data-modal="produto"></div>
+      </div>
+    </section>
+
+    <script type="module" src="./js/script.js"></script>
+  </body>
+</html>
