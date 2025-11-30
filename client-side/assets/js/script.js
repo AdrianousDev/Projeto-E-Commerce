@@ -19,4 +19,4 @@ initCategorias(produtos, categorias);
 quantidadeProdutos(produtos.length);
 barraDeBusca(produtos);
 initModal(produtos);
-initCarrinho(produtos);
+initCarrinho();

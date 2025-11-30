@@ -13,9 +13,9 @@ export default function preencherModalProduto(produto) {
 
         <div class="flex justify-center mb-4">
           <img 
-          src="${produto.imagemUrl || "/client-side/src/imgs/default.png"}" 
+          src="${produto.imagemUrl || "/client-side/assets/imgs/default.png"}" 
           alt="${produto.titulo}" class="h-40 object-contain" 
-          onerror="this.onerror=null; this.src='/client-side/src/imgs/default.png';"
+          onerror="this.onerror=null; this.src='/client-side/assets/imgs/default.png';"
           />
         </div>
 

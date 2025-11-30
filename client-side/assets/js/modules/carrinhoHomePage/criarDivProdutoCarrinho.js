@@ -11,10 +11,10 @@ export default function criarDivProdutoCarrinho(produto) {
   card.innerHTML = `
         <div class="flex items-center gap-3">
           <img 
-            src="${produto.imagemUrl || "/client-side/src/imgs/default.png"}"
+            src="${produto.imagemUrl || "/client-side/assets/imgs/default.png"}"
             alt="${produto.titulo}" 
             class="w-12 h-12 object-contain rounded"
-            onerror="this.onerror=null; this.src='/client-side/src/imgs/default.png';"
+            onerror="this.onerror=null; this.src='/client-side/assets/imgs/default.png';"
           />
           <div>
             <h4 class="text-sm font-semibold text-gray-800" title="${
