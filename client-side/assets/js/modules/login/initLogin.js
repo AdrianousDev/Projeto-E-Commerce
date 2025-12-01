@@ -1,3 +1,4 @@
+import logout from "./logout.js";
 import realizarLogin, { mostrarNomeLogin } from "./realizarLogin.js";
 
 export default function initLogin() {
@@ -31,4 +32,5 @@ export default function initLogin() {
 
   realizarLogin();
   mostrarNomeLogin();
+  logout();
 }
