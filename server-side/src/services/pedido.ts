@@ -1,3 +1,4 @@
+import { Prisma } from "@prisma/client";
 import { prisma } from "../libs/prisma";
 
 export const createPedido = async (clienteId, produtos) => {
@@ -48,5 +49,24 @@ export const findMeuPedidos = async (email) => {
     return { pedidos: meusPedidos };
   } catch (error) {
     return false;
+  }
+};
+
+export const deletePedido = async (id: number) => {
+  try {
+    // 1 — deletar itens relacionados
+    await prisma.itemPedido.deleteMany({
+      where: { pedidoId: id },
+    });
+
+    // 2 — deletar o pedido
+    const deletedPedido = await prisma.pedido.delete({
+      where: { id },
+    });
+
+    return deletedPedido;
+  } catch (error: any) {
+    console.error("Erro ao deletar pedido:", error);
+    return { error: error.meta || error.message };
   }
 };

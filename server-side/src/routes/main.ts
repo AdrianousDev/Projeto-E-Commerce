@@ -6,7 +6,7 @@ import {
   findProduto,
   deleteProduto,
 } from "../services/produto";
-import { createPedido, findMeuPedidos } from "../services/pedido";
+import { createPedido, deletePedido, findMeuPedidos } from "../services/pedido";
 import { validarCarrinho } from "../services/validarCarrinho";
 import { validarEstoque } from "../middlewares/validarEstoque";
 import { listCategorias } from "../services/categoria";
@@ -77,6 +77,13 @@ mainRouter.post("/pedidos", validarEstoque, async (req, res) => {
   res.json(result);
 });
 
+mainRouter.delete("/pedidos/:id", async (req, res) => {
+  const id: number = parseInt(req.params.id);
+
+  const result = await deletePedido(id);
+  res.json(result);
+});
+
 mainRouter.post("/carrinho/validar", async (req, res) => {
   const { produtoId, quantidade } = req.body;
   console.log(produtoId, quantidade);
@@ -85,8 +92,8 @@ mainRouter.post("/carrinho/validar", async (req, res) => {
   res.json(result);
 });
 
-mainRouter.get("/minhas-compras", async (req, res) => {
-  const email = req.body.email;
+mainRouter.get("/minhas-compras/:email", async (req, res) => {
+  const email = req.params.email;
 
   const result = await findMeuPedidos(email);
   res.json(result);
