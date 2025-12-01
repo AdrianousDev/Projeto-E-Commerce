@@ -131,6 +131,10 @@ Para testes de endpoints, foi utilizado a ferramenta PostMan. Com criações de 
 }
 ```
 
+#### GET /clientes/:email
+
+- **Retorna a existencia ou não de um cliente com o email passado via params. No bd esse email é "unique".**
+
 ## Categoria
 
 #### GET /categorias
@@ -140,9 +144,9 @@ Para testes de endpoints, foi utilizado a ferramenta PostMan. Com criações de 
 
 ## Minhas Compras
 
-#### GET /minhas-compras
+#### POST /minhas-compras/:email
 
-- **Retorna todos os pedidos do cliente passando o EMAIL do usuário via json body.**
+- **Retorna todos os pedidos do cliente passando o EMAIL do usuário via params.**
 - **Resposta um pouco complexa, mas muito completa.**
 
 ## Pedidos
@@ -161,6 +165,10 @@ Para testes de endpoints, foi utilizado a ferramenta PostMan. Com criações de 
 }
 ```
 
+#### DELETE /pedidos/:id
+
+- **Deleta um pedido com base no id passado via params na url.**
+
 ## Validar produtos no carrinho
 
 #### POST /carrinho/validar
@@ -176,3 +184,10 @@ Para testes de endpoints, foi utilizado a ferramenta PostMan. Com criações de 
     "quantidade":9
 }
 ```
+
+## Variáveis de ambiente
+
+#### GET /env
+
+- **Por estar usando JS puro no front end, queria centralizar alguns dados como por exemplo os endpoints.**
+- **Então criei essa rota para que o backend padronize e forneça suas rotas via JSON em um get.**
