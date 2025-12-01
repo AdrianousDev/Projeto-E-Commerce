@@ -27,6 +27,7 @@ export default function realizarLogin() {
     }
 
     const dadosCliente = {
+      id: cliente.id,
       nome: cliente.nome,
       email: cliente.email,
     };

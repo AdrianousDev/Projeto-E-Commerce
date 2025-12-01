@@ -1,5 +1,6 @@
 import chamarApi from "../chamarApi.js";
 import criarDivProdutoCarrinho from "./criarDivProdutoCarrinho.js";
+import exibirTotalPedido from "./exibirTotalPedido.js";
 
 export default async function exibirItemCarrinho() {
   const env = await chamarApi("http://localhost:3000/env");
@@ -27,4 +28,6 @@ export default async function exibirItemCarrinho() {
   buscarProdutos.forEach((produto) => {
     criarDivProdutoCarrinho(produto);
   });
+
+  exibirTotalPedido();
 }

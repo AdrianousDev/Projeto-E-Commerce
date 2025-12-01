@@ -1,12 +1,14 @@
 import exibirItemCarrinho from "./exibirItemCarrinho.js";
 import quantidadeProdutosCarrinho from "./quantidadeProdutosCarrinho.js";
+import realizarPedidoEvent from "./realizarPedidoEvent.js";
 
-export default function initCarrinho() {
+export default async function initCarrinho() {
   // cria se não tiver
   if (!localStorage.getItem("carrinho")) {
     localStorage.setItem("carrinho", JSON.stringify([]));
   }
 
-  exibirItemCarrinho();
+  await exibirItemCarrinho();
   quantidadeProdutosCarrinho();
+  realizarPedidoEvent();
 }

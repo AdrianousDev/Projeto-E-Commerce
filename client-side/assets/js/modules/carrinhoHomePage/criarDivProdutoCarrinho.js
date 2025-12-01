@@ -26,13 +26,15 @@ export default function criarDivProdutoCarrinho(produto) {
                   : produto.titulo
               }
             </h4>
-            <p class="text-xs text-gray-500">${produto.category}</p>
+            <p class="text-xs text-gray-500">${produto.categoria}</p>
           </div>
         </div>
         <div class="flex flex-col items-center gap-1">
-          <span class="text-green-600 font-semibold text-sm">R$ ${(
+          <span data-precoprodutototal="${
             Number(produto.preco).toFixed(2) * produto.quantidade
-          ).toFixed(2)}</span>
+          }" class="text-green-600 font-semibold text-sm">R$ ${(
+    Number(produto.preco).toFixed(2) * produto.quantidade
+  ).toFixed(2)}</span>
           <div class="flex items-center gap-2">
             <button class="btn-menos bg-gray-200 hover:bg-gray-300 rounded w-6 h-6 text-sm font-bold flex items-center justify-center">−</button>
             <span class="quantidade text-sm font-medium w-5 text-center">${
