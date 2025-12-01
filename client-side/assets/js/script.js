@@ -5,6 +5,7 @@ import quantidadeProdutos from "./modules/catalogoHomePage/quantidadeProdutos.js
 import barraDeBusca from "./modules/catalogoHomePage/barraDeBusca.js";
 import initModal from "./modules/modal/initModal.js";
 import initCarrinho from "./modules/carrinhoHomePage/initCarrinho.js";
+import initLogin from "./modules/login/initLogin.js";
 
 const env = await chamarApi("http://localhost:3000/env");
 
@@ -20,3 +21,4 @@ quantidadeProdutos(produtos.length);
 barraDeBusca(produtos);
 initModal(produtos);
 initCarrinho();
+initLogin();

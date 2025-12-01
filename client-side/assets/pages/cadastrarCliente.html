@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Criar Cliente | CRUD E-commerce</title>
+    <link rel="stylesheet" href="../css/output.css" />
+  </head>
+
+  <body class="bg-gray-100 text-gray-900">
+    <header
+      class="container mx-auto flex justify-between items-center py-8 px-4"
+    >
+      <a href="../index.html">
+        <h1
+          class="text-4xl font-bold text-blue-800 uppercase hover:text-blue-950 transition"
+        >
+          E-commerce
+        </h1>
+      </a>
+
+      <nav class="flex gap-8">
+        <a
+          href="./criarProduto.html"
+          class="bg-blue-200 py-2 px-4 rounded-md font-medium text-blue-800 hover:bg-blue-300 transition"
+        >
+          Criar Produto
+        </a>
+
+        <a
+          href="./deletarProduto.html"
+          class="bg-blue-200 py-2 px-4 rounded-md font-medium text-blue-800 hover:bg-blue-300 transition"
+        >
+          Deletar Produto
+        </a>
+
+        <a
+          href="./criarCliente.html"
+          class="bg-blue-300 py-2 px-4 rounded-md font-medium text-blue-900 cursor-default"
+        >
+          Criar Cliente
+        </a>
+
+        <a
+          href="../index.html"
+          class="bg-blue-200 py-2 px-4 rounded-md font-medium text-blue-800 hover:bg-blue-300 transition"
+        >
+          Home
+        </a>
+      </nav>
+    </header>
+
+    <main class="container mx-auto px-4 py-10">
+      <section
+        class="bg-white p-8 rounded-lg shadow max-w-xl mx-auto space-y-6 border border-gray-200"
+      >
+        <h2 class="text-3xl font-bold text-blue-800 border-b pb-4">
+          Criar Cliente
+        </h2>
+
+        <form id="formCriarCliente" class="space-y-5">
+          <div>
+            <label class="block text-sm font-medium mb-1">Nome</label>
+            <input
+              type="text"
+              name="nome"
+              required
+              placeholder="Digite o nome do cliente"
+              class="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+          </div>
+
+          <div>
+            <label class="block text-sm font-medium mb-1">Email</label>
+            <input
+              type="email"
+              name="email"
+              required
+              placeholder="Digite o email do cliente"
+              class="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+          </div>
+
+          <button
+            type="submit"
+            class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-md transition"
+          >
+            Criar Cliente
+          </button>
+        </form>
+
+        <p id="resultado" class="text-center text-lg font-medium"></p>
+      </section>
+    </main>
+
+    <script type="module" src="../js/modules/cadastrar/index.js"></script>
+  </body>
+</html>

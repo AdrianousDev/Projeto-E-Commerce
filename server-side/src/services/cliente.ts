@@ -9,3 +9,12 @@ export const createCliente = async (data: Prisma.ClienteCreateInput) => {
     return false;
   }
 };
+
+export const findCliente = async (email: string) => {
+  try {
+    const user = await prisma.cliente.findUnique({ where: { email } });
+    return user;
+  } catch (error) {
+    return false;
+  }
+};

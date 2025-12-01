@@ -1,6 +1,5 @@
 import { Router } from "express";
-import dotenv from "dotenv";
-import { createCliente } from "../services/cliente";
+import { createCliente, findCliente } from "../services/cliente";
 import {
   createProduto,
   listProdutos,
@@ -27,6 +26,13 @@ mainRouter.post("/clientes", async (req, res) => {
   };
 
   const result = await createCliente(data);
+  res.json(result);
+});
+
+mainRouter.get("/clientes/:email", async (req, res) => {
+  const email: string = req.params.email;
+
+  const result = await findCliente(email);
   res.json(result);
 });
 
