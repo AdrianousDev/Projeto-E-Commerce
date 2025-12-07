@@ -9,6 +9,12 @@ export const validarCarrinho = async (
       where: { id: produtoId },
     });
 
+    /*
+SELECT *
+FROM Produto
+WHERE id = PRODUTO_ID;
+*/
+
     if (!produto) {
       return { error: "Produto não encontrado." };
     }

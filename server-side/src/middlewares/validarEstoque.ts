@@ -14,6 +14,12 @@ export const validarEstoque = async (req, res, next) => {
       where: { id: { in: produtos.map((p) => p.id) } },
     });
 
+    /*
+    SELECT *
+    FROM Produto
+    WHERE id IN (id, id, id);
+    */
+
     for (const item of produtos) {
       const produto = produtosDoBanco.find((p) => p.id === item.id);
 

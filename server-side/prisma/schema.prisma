@@ -25,7 +25,7 @@ model Produto {
   estoque   Int
   createdAt DateTime     @default(now())
   updatedAt DateTime     @updatedAt
-  avaliacao Decimal      @default("0") @db.Decimal(2, 1)
+  avaliacao Decimal?     @default("0") @db.Decimal(2, 1)
   itens     ItemPedido[]
 }
 
@@ -47,3 +47,6 @@ model ItemPedido {
   pedido  Pedido  @relation(fields: [pedidoId], references: [id])
   produto Produto @relation(fields: [produtoId], references: [id])
 }
+
+// CREATE TABLE ... ()
+// model -> table

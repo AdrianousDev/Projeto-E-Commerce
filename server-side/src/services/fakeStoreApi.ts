@@ -34,6 +34,38 @@ export const fetchFakeStoreApi = async () => {
       )
     );
 
+    /*
+INSERT INTO Produto (
+  titulo,
+  descricao,
+  preco,
+  categoria,
+  imagemUrl,
+  estoque,
+  avaliacao,
+  createdAt
+)
+VALUES (
+  'product.title',
+  'product.description',
+  product.price,
+  'product.category',
+  'product.image',
+  product.rating.count,
+  product.rating.rate,
+  NOW()
+)
+ON DUPLICATE KEY UPDATE
+  descricao = VALUES(descricao),
+  preco = VALUES(preco),
+  categoria = VALUES(categoria),
+  imagemUrl = VALUES(imagemUrl),
+  estoque = VALUES(estoque),
+  avaliacao = VALUES(avaliacao),
+  updatedAt = NOW();
+
+*/
+
     return upsertedProducts;
   } catch (error) {
     console.error("Erro no upsert:", error);

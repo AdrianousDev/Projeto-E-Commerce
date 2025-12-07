@@ -7,7 +7,12 @@ export const listCategorias = async () => {
       distinct: ["categoria"], // não repetir
     });
 
-    const listaDeCategorias = categorias.map((c) => c.categoria); // apenas os nomes
+    /*
+    SELECT DISTINCT categoria
+    FROM Produto;
+    */
+
+    const listaDeCategorias = categorias.map((c) => c.categoria); // apenas os nomes em um array. obj -> array
 
     return listaDeCategorias;
   } catch (err) {
